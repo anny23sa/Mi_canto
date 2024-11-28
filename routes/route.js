@@ -3,6 +3,7 @@ const router = express.Router();
 const fs = require('fs')
 const readRepertorio = () => JSON.parse(fs.readFileSync("./repertorio.json", "utf8"));
 const writeRepertorio = (data) => fs.writeFileSync("./repertorio.json", JSON.stringify(data, null, 2), "utf8");
+
 // GET: Leer todas las canciones
 router.get("/canciones", (req, res) => {
 try {
@@ -13,6 +14,7 @@ console.error("Error al leer el archivo:", error);
 res.status(500).send("Error al leer el archivo.");
 }
 });
+
 // POST: Crear una nueva canción
 router.post("/canciones", (req, res) => {
 try {
@@ -26,6 +28,7 @@ console.error("Error al agregar la canción:", error);
 res.status(500).send("Error al agregar la canción.");
 }
 });
+
 // PUT: Actualizar una canción existente
 router.put("/canciones/:id", (req, res) => {
 try {
@@ -45,6 +48,7 @@ console.error("Error al actualizar la canción:", error);
 res.status(500).send("Error al actualizar la canción.");
 }
 });
+
 // DELETE: Eliminar una canción
 router.delete("/canciones/:id", (req, res) => {
 try {
@@ -62,9 +66,6 @@ console.error("Error al eliminar la canción:", error);
 res.status(500).send("Error al eliminar la canción.");
 }
 });
-
-
-
 
 
 
